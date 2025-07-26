@@ -10,7 +10,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #2c3e50;
+  background: #415160;
   color: white;
   padding: 0.3rem 3rem;
 }
@@ -52,6 +52,7 @@ body {
   font-size: 1.1rem;
   border-radius: 5px;
   border-color: black;
+  border: none;
   outline: none;
 }
 input:focus {
@@ -88,3 +89,77 @@ h2 {
   color: black;
   /* margin-top: 10px; */
 }
+.logout-btn {
+  display: flex;
+  background-color: #f5f5f5;
+  color: #000000;
+  border: none;
+  border-radius: 5rem;
+  font-size: larger;
+  cursor: pointer;
+}
+.logout-btn:hover{
+  background-color: #567ab8;
+}
+
+
+
+/* MARKET PLACE */
+.marketplace-container {
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+}
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(100px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.product-card {
+  background-color: #f4f4f4;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 0.5rem;
+  height: 140px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+  background-color: #eaeaea;
+}
+
+.product-card button {
+  padding: 0.5rem 1rem;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.product-card button:hover {
+  background-color: #145ca1;
+}
+
+.cart {
+  margin-top: 3rem;
+  background-color: #fff;
+  border: 2px solid #ddd;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.cart ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
