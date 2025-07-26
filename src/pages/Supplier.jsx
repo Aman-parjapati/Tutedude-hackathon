@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Supplier() {
   return (
-    <div className="page">
+    <div>
       <h2>Supplier Directory</h2>
       <ul>
         <li>🛒 Ramesh Kirana Store - Chennai</li>

@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Inter', sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -11,13 +12,13 @@ body {
   align-items: center;
   background: #2c3e50;
   color: white;
-  padding: 1rem 2rem;
+  padding: 0.3rem 3rem;
 }
 
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 1.5rem;
+  gap: 28px;
   cursor: pointer;
 }
 
@@ -32,6 +33,58 @@ body {
     color: red;
 }
 
-.content {
-  padding: 2rem;
+.page {
+  background: #34699A;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form{
+  text-align: center;
+  font-size: 20px;
+  background-color: #58A0C8;
+  padding: 3rem;
+  border-radius: 8px;
+
+}
+.page .form input{
+  font-size: 1.1rem;
+  border-radius: 5px;
+  border-color: black;
+  outline: none;
+}
+input:focus {
+  border-color: #2a5298;
+}
+h2 {
+  padding-bottom: 30px;
+  margin-bottom: 25px;
+  color: #333;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  box-shadow: none;
+  width: 300px;
+}
+.form button{
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.form p{
+  text-align: center;
+  font-size: 14px;
+}
+.form p a{
+  text-decoration: none;
+  color: #FFEAEA;
+}
+.form span {
+  padding: 10px;
+  /* position: absolute; */
+  /* margin-left: 10px; */
+  color: black;
+  /* margin-top: 10px; */
 }

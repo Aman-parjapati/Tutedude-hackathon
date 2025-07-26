@@ -1,44 +1,43 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { Link } from 'react-router-dom'; // 👈 Required for navigation
+import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate, Link } from 'react-router-dom';
 
-function Login() {
+function Login({ setIsLoggedIn }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const inputRef = useRef(null);
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
-    alert(`Logged in with ${email}`);
-  };
 
-  useEffect(() => {
-    inputRef.current.focus();
-  }, []);
+    // Retrieve stored user
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+
+      if (storedUser && storedUser.email === email && storedUser.password === password) {
+      setIsLoggedIn(true);
+      alert('Login successful!');
+      navigate('/marketplace'); // or any protected page
+    } else {
+      alert('Invalid credentials');
+    }
+  };
 
   return (
     <div className="page">
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <input
-          ref={inputRef}
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          required
-        />
-        <br /><br />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          required
-        />
-        <br /><br />
-        <button type="submit">Login</button>
-      </form>
-      <p>Don't have an account? <Link to="/signup">Sign Up</Link></p> {/* 👈 Navigation to SignUp */}
+      <div className="form">
+        <h2>Login</h2>
+        <form onSubmit={handleLogin}>
+          <span><FontAwesomeIcon icon={faEnvelope} /></span>
+          <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
+          <br /><br />
+          <span><FontAwesomeIcon icon={faLock} /></span>
+          <input type="password"  placeholder="Password" value={password}  onChange={(e) => setPassword(e.target.value)} required />
+          <br /><br />
+          <button type="submit">Login</button>
+        </form>
+        <p>Don’t have an account? <Link to="/signup">Signup</Link></p>
+      </div>
     </div>
   );
 }
