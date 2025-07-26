@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate, Link } from 'react-router-dom';
 
 function Login({ setIsLoggedIn }) {
@@ -11,13 +11,12 @@ function Login({ setIsLoggedIn }) {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    // Retrieve stored user
     const storedUser = JSON.parse(localStorage.getItem('user'));
 
       if (storedUser && storedUser.email === email && storedUser.password === password) {
       setIsLoggedIn(true);
       alert('Login successful!');
-      navigate('/marketplace'); // or any protected page
+      navigate('/marketplace'); 
     } else {
       alert('Invalid credentials');
     }

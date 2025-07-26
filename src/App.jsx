@@ -8,6 +8,11 @@ import Marketplace from './pages/Marketplace';
 import Supplier from './pages/Supplier';
 import Order from './pages/Order';
 
+// 👇 New Vendor Pages
+import VendorRegister from './pages/VendorRegister';
+import VendorDashboard from './pages/VendorDashboard';
+import VendorLogin from './pages/VendorLogin';
+
 export default function App() {
   const navigate = useNavigate();
 
@@ -16,6 +21,9 @@ export default function App() {
   });
 
   const [cart, setCart] = useState([]);
+
+  // 🆕 Store uploaded products from vendors (shared with Marketplace)
+  const [vendorProducts, setVendorProducts] = useState([]);
 
   useEffect(() => {
     localStorage.setItem('isLoggedIn', isLoggedIn);
@@ -40,9 +48,15 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login setIsLoggedIn={handleLogin} />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/marketplace" element={<Marketplace cart={cart} setCart={setCart} />} />
+
+        <Route path="/marketplace" element={ <Marketplace cart={cart} setCart={setCart} vendorProducts={vendorProducts} />} />
+
         <Route path="/supplier" element={<Supplier />} />
         <Route path="/order" element={<Order cartItems={cart} />} />
+        <Route path="/vendor-register" element={<VendorRegister />} />
+        <Route path='/vendor-login' element={<VendorLogin />} />
+
+        <Route path="/vendor-dashboard" element={ <VendorDashboard vendorProducts={vendorProducts} setVendorProducts={setVendorProducts} />}/>
       </Routes>
     </>
   );

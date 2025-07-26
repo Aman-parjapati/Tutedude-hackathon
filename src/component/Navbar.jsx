@@ -10,7 +10,11 @@ export default function Navbar({ isLoggedIn, handleLogout}) {
       <ul className="nav-links">
         <li><Link to="/">Home</Link></li>
 
-        {!isLoggedIn && <li><Link to="/login">Login</Link></li>}
+        {!isLoggedIn && (
+          <>
+            <li><Link to="/vendor-login">Vendor Login</Link></li>
+            <li><Link to="/login">Login</Link></li>
+          </>)}
 
         {isLoggedIn && (
           <>

@@ -30,7 +30,6 @@ export default function Order({ cartItems }) {
   );
 }
 
-// Styles
 const thStyle = {
   border: '1px solid #ddd',
   padding: '8px',
