@@ -7,38 +7,44 @@ const AiAssistant = () => {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const handleSend = async () => {
-    if (!input.trim()) return;
+const handleSend = async () => {
+  if (!input.trim()) return;
 
-    const userMessage = { sender: 'user', text: input };
-    setMessages((prev) => [...prev, userMessage]);
-    setInput('');
-    setLoading(true);
+  const userMessage = { sender: 'user', text: input };
+  setMessages((prev) => [...prev, userMessage]);
+  setInput('');
+  setLoading(true);
 
-    try {
-      const response = await fetch('http://localhost:5000/api/ai/query', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ question: input }),
-      });
+  try {
+    const response = await fetch('http://localhost:5000/api/ai/query', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query: input })
+    });
 
-      const data = await response.json();
-      const aiMessage = {
-        sender: 'ai',
-        text: data.answer || "⚠️ AI didn't return a proper response.",
-      };
-
-      setMessages((prev) => [...prev, aiMessage]);
-    } catch (error) {
-      console.error('AI API error:', error);
-      setMessages((prev) => [
-        ...prev,
-        { sender: 'ai', text: '❌ Error contacting AI server.' },
-      ]);
-    } finally {
-      setLoading(false);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
-  };
+
+    const data = await response.json();
+    console.log('Backend response:', data); // Debug log
+    
+    const aiMessage = {
+      sender: 'ai',
+      text: data.response || data.message || `Server responded but no message found. Status: ${response.status}`,
+    };
+
+    setMessages((prev) => [...prev, aiMessage]);
+  } catch (error) {
+    console.error('AI API error:', error);
+    setMessages((prev) => [
+      ...prev,
+      { sender: 'ai', text: `❌ Error: ${error.message}` },
+    ]);
+  } finally {
+    setLoading(false);
+  }
+};
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {

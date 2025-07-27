@@ -95,3 +95,14 @@
   color: white;
   cursor: pointer;
 }
+.ai-message.ai {
+  background-color: #f1f8e9;
+  text-align: left;
+  white-space: pre-line; /* This preserves line breaks and formatting */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.4;
+}
+
+.ai-message.ai strong {
+  color: #2e7d32;
+  font-weight:  Schema Compatibility}
