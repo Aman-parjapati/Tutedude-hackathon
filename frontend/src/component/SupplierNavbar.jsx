@@ -7,7 +7,7 @@ export default function SupplierNavbar({ handleLogout }) {
     return (
         <nav className="navbar">
             <h1>
-                <Link to="/supplier-dashboard">Supplier Dashboard</Link>
+                <Link to="/supplier-dashboard" style={{textDecoration:"none", color:"black"}}>Supplier Dashboard</Link>
             </h1>
             <ul className="nav-links">
                 <li>

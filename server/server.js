@@ -5,6 +5,7 @@ require('dotenv').config();
 const authRoutes = require('./routes/auth');
 const productRoutes = require('./routes/products');
 const { getSuppliers } = require('./controllers/productController'); // ✅ MISSING IMPORT - This was the issue!
+const aiRoutes = require('./routes/aiRoutes');
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(express.json());
 
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
+app.use('/api/ai', aiRoutes); // ✅ NEW: AI Data route
 
 // ✅ new, self-contained suppliers router
 const suppliersRouter = express.Router();

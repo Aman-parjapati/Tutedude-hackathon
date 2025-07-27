@@ -11,6 +11,7 @@ import Order from './pages/Order';
 import SupplierRegister from './pages/SupplierRegister';
 import SupplierDashboard from './pages/SupplierDashboard';
 import SupplierLogin from './pages/SupplierLogin';
+import AiAssistant from './component/AiAssistant';
 
 export default function App() {
     const navigate = useNavigate();
@@ -73,6 +74,7 @@ export default function App() {
                         setProducts={setSupplierProducts} 
                     />
                 } />
+                <Route path="/ai_assistant" element={<AiAssistant />} />
             </Routes>
         </>
     );

@@ -7,7 +7,7 @@ export default function Navbar({ isLoggedIn, handleLogout}) {
     return (
         <nav className="navbar">
             <h1>
-                <Link to="/">Tutedude</Link>
+                <Link style={{textDecoration: "none", color:"black"}} to="/">Tutedude</Link>
             </h1>
             <ul className="nav-links">
                 <li><Link to="/">Home</Link></li>

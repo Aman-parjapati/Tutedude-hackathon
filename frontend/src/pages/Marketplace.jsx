@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import AiAssistant from '../component/AiAssistant';
 
 export default function Marketplace({ cart, setCart }) {
     const [products, setProducts] = useState([]);
@@ -84,6 +85,7 @@ export default function Marketplace({ cart, setCart }) {
             {products.length === 0 && (
                 <p>No products available at the moment.</p>
             )}
+            <AiAssistant/>
         </div>
     );
 }
